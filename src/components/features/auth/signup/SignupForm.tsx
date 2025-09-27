@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import DatePicker from '@/components/ui/date-picker';
 
 import {
   Form,
@@ -312,13 +313,16 @@ export default function SignupForm() {
           </div>
 
           {/* Birth Date and Gender */}
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 '>
             <FormField
               control={form.control}
               name='birthDate'
               render={({ field }) => (
                 <FormItem className='flex flex-col'>
-                  <FormControl></FormControl>
+                  <FormLabel className='text-sm font-medium text-gray-700'>Birth Date *</FormLabel>
+                  <FormControl>
+                    <DatePicker field={field} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
