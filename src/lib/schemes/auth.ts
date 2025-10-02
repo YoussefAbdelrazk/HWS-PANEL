@@ -17,11 +17,10 @@ export const signupSchema = z
     gender: z.enum(['male', 'female', 'other'], {
       message: 'Please select a gender',
     }),
-    countryCode: z.string().min(1, 'Country code is required'),
-    mobileNumber: z
-      .string()
-      .min(1, 'Mobile number is required')
-      .regex(/^\d+$/, 'Mobile number must contain only digits'),
+    phone: z.string().min(1, 'Phone number is required'),
+    nationalPhoneNumber: z.string().optional(),
+    countryCode: z.string().optional(),
+    selectedCountry: z.string().optional(),
     email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
     password: z
       .string()
