@@ -31,7 +31,7 @@ export default function DatePicker({ field }: DatePickerProps) {
               ) : (
                 <span>Pick a date</span>
               )}
-              <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              <CalendarIcon className='ml-auto h-4 w-4 opacity-50 text-yellow-500' />
             </Button>
           </FormControl>
         </PopoverTrigger>
