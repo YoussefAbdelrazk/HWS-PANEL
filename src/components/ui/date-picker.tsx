@@ -15,10 +15,10 @@ interface DatePickerProps {
 
 export default function DatePicker({ field }: DatePickerProps) {
   return (
-    <div className='w-full h-12  rounded-md '>
+    <div className='w-full h-12  rounded-md border-gray-300'>
       <Popover>
-        <PopoverTrigger asChild>
-          <FormControl className='w-full h-full'>
+        <PopoverTrigger asChild className=''>
+          <FormControl className='w-full h-full '>
             <Button
               variant={'outline'}
               className={cn(

@@ -13,8 +13,26 @@ export const signupSchema = z
   .object({
     firstName: z.string().min(1, 'First name is required'),
     lastName: z.string().min(1, 'Last name is required'),
-    birthDate: z.string().min(1, 'Birth date is required'),
-    gender: z.enum(['male', 'female', 'other'], {
+    birthDate: z
+      .string()
+      .min(1, 'Birth date is required')
+      .refine(
+        date => {
+          const birthDate = new Date(date);
+          const today = new Date();
+          const age = today.getFullYear() - birthDate.getFullYear();
+          const monthDiff = today.getMonth() - birthDate.getMonth();
+
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            return age - 1 >= 13;
+          }
+          return age >= 13;
+        },
+        {
+          message: 'You must be at least 13 years old to register',
+        },
+      ),
+    gender: z.enum(['male', 'female'], {
       message: 'Please select a gender',
     }),
     phone: z.string().min(1, 'Phone number is required'),

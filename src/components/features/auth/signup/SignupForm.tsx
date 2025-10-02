@@ -163,11 +163,11 @@ export default function SignupForm() {
   };
 
   return (
-    <div className='w-full max-w-2xl mx-auto'>
+    <div className='w-full max-w-3dxl mx-auto'>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
           {/* Name Fields */}
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
             <FormField
               control={form.control}
               name='firstName'
@@ -219,7 +219,7 @@ export default function SignupForm() {
               control={form.control}
               name='birthDate'
               render={({ field }) => (
-                <FormItem className='flex flex-col'>
+                <FormItem className=''>
                   <FormLabel className='text-sm font-medium text-gray-700'>Birth Date *</FormLabel>
                   <FormControl>
                     <DatePicker field={field} />
@@ -234,10 +234,16 @@ export default function SignupForm() {
               name='gender'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-sm font-medium text-gray-700'>Gender *</FormLabel>
+                  <FormLabel className='text-sm font-medium text-gray-700 '>Gender *</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className='h-12 border-gray-300 focus:ring-yellow-500 focus:border-yellow-500'>
+                      <SelectTrigger
+                        className={`h-12 w-full ${
+                          errors.gender
+                            ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                            : 'border-gray-300 focus:ring-yellow-500 focus:border-yellow-500'
+                        }`}
+                      >
                         <div className='flex items-center'>
                           <Users className='h-4 w-4 text-yellow-500 mr-2' />
                           <SelectValue placeholder='Select your gender' />
@@ -247,7 +253,7 @@ export default function SignupForm() {
                     <SelectContent>
                       <SelectItem value='male'>Male</SelectItem>
                       <SelectItem value='female'>Female</SelectItem>
-                      <SelectItem value='other'>Other</SelectItem>
+                      
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -255,55 +261,56 @@ export default function SignupForm() {
               )}
             />
           </div>
-
-          {/* Phone Number */}
-          <FormField
-            control={form.control}
-            name='phone'
-            render={() => (
-              <FormItem>
-                <FormLabel className='text-sm font-medium text-gray-700'>Phone Number *</FormLabel>
-                <FormControl>
-                  <div className='relative right-10 top-3'>
+          <div className=' w-full grid grid-cols-1 md:grid-cols-2 gap-4'>
+            {/* Phone Number */}
+            <FormField
+              control={form.control}
+              name='phone'
+              render={() => (
+                <FormItem>
+                  <FormLabel className='text-sm font-medium text-gray-700'>
+                    Phone Number *
+                  </FormLabel>
+                  <FormControl>
                     <PhoneInput
                       placeholder='Enter your phone number'
-                      className='pl-10 h-12 border-gray-300 '
+                      className='h-12 border-gray-300 w-full'
                       value={phone}
                       onChange={handlePhoneChange}
                       onCountryChange={handleCountryChange}
                       onNationalNumberChange={handleNationalNumberChange}
                       defaultCountry='EG'
                     />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          {/* Email */}
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className='text-sm font-medium text-gray-700'>Email *</FormLabel>
-                <FormControl>
-                  <div className='relative'>
-                    <Mail className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-yellow-500' />
-                    <Input
-                      placeholder='Enter your email'
-                      type='email'
-                      className='pl-10 h-12 border-gray-300 focus:ring-yellow-500 focus:border-yellow-500'
-                      error={!!errors.email}
-                      {...field}
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            {/* Email */}
+            <FormField
+              control={form.control}
+              name='email'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className='text-sm font-medium text-gray-700'>Email *</FormLabel>
+                  <FormControl>
+                    <div className='relative'>
+                      <Mail className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-yellow-500' />
+                      <Input
+                        placeholder='Enter your email'
+                        type='email'
+                        className='pl-10 h-12 border-gray-300 focus:ring-yellow-500 focus:border-yellow-500'
+                        error={!!errors.email}
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
           {/* Password Fields */}
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
