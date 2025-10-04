@@ -59,7 +59,7 @@ export default function MainTrainingCard({ course }: MainTrainingCardProps) {
         </div>
 
         {/* Footer */}
-        <div className='flex items-center justify-between'>
+        <div className='flex flex-col md:flex-row items-center justify-between'>
           <div className='flex items-center gap-6'>
             <div className='flex items-center gap-2'>
               <Clock size={16} className='text-[#667085]' />
