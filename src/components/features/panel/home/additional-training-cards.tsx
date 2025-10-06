@@ -1,4 +1,5 @@
 'use client';
+import Section from '@/components/layout/header/section';
 import { Progress } from '@/components/ui/progress';
 import { TrainingCourse } from '@/lib/data/training';
 import React from 'react';
@@ -48,48 +49,50 @@ export default function AdditionalTrainingCards({ courses }: AdditionalTrainingC
   };
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-3'>
-      {courses.map(course => (
-        <div key={course.id} className='bg-white shadow-lg rounded-lg p-4  '>
-          {/* Header */}
-          <div className='flex items-center justify-between mb-4'>
-            <h3 className='text-lg font-semibold text-[#344054]'>{course.title}</h3>
-            <span
-              className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
-                course.status,
-              )}`}
-            >
-              {getStatusText(course.status)}
-            </span>
-          </div>
+    <Section>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-3'>
+        {courses.map(course => (
+          <div key={course.id} className='bg-white shadow-lg rounded-lg p-4  '>
+            {/* Header */}
+            <div className='flex items-center justify-between mb-4'>
+              <h3 className='text-lg font-semibold text-[#344054]'>{course.title}</h3>
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                  course.status,
+                )}`}
+              >
+                {getStatusText(course.status)}
+              </span>
+            </div>
 
-          {/* Progress Bar */}
-          <div className='mb-4'>
-            <Progress
-              value={course.progress}
-              className='h-2'
-              style={
-                {
-                  '--progress-color': getProgressColor(course.status, course.color),
-                } as React.CSSProperties
-              }
-            />
-          </div>
+            {/* Progress Bar */}
+            <div className='mb-4'>
+              <Progress
+                value={course.progress}
+                className='h-2'
+                style={
+                  {
+                    '--progress-color': getProgressColor(course.status, course.color),
+                  } as React.CSSProperties
+                }
+              />
+            </div>
 
-          {/* Additional Info */}
-          <div className='text-sm text-[#667085]'>
-            {course.status === 'completed' && course.certificateEarned && (
-              <p>Certificate earned on {course.certificateEarned}</p>
-            )}
-            {course.status === 'in-progress' && course.hoursRemaining && (
-              <p>
-                {course.progress}% complete - {course.hoursRemaining} hours left
-              </p>
-            )}
-            {course.status === 'not-started' && course.description && <p>{course.description}</p>}
+            {/* Additional Info */}
+            <div className='text-sm text-[#667085]'>
+              {course.status === 'completed' && course.certificateEarned && (
+                <p>Certificate earned on {course.certificateEarned}</p>
+              )}
+              {course.status === 'in-progress' && course.hoursRemaining && (
+                <p>
+                  {course.progress}% complete - {course.hoursRemaining} hours left
+                </p>
+              )}
+              {course.status === 'not-started' && course.description && <p>{course.description}</p>}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Section>
   );
 }
