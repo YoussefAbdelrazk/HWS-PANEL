@@ -1,12 +1,13 @@
-import Banner from '@/components/layout/header/banner';
+import Footer from '@/components/layout/footer/footer';
 import Navbar from '@/components/layout/header/navbar';
 
 export default function PanelLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div className='min-h-screen flex flex-col'>
       <Navbar />
       {/* <Banner /> */}
-      <div className=' '>{children}</div>
+      <main className='flex-1'>{children}</main>
+      <Footer />
     </div>
   );
 }
