@@ -40,7 +40,7 @@ export function HeroBanner({ title, subtitle, benefits }: HeroBannerProps) {
         <p className='text-lg md:text-xl mb-8 text-gray-200 max-w-3xl mx-auto'>{subtitle}</p>
 
         {/* Benefits */}
-        <div className='flex flex-wrap justify-center gap-8 md:gap-12'>
+        <div className='grid grid-cols-2 md:grid-cols-3 gap-4 place-items-center justify-items-center p-4'>
           {benefits.map((benefit, index) => {
             const IconComponent = iconMap[benefit.icon as keyof typeof iconMap];
             return (

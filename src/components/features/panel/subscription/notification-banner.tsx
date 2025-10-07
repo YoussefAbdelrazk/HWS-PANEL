@@ -8,9 +8,9 @@ interface NotificationBannerProps {
 
 export function NotificationBanner({ title, description, paymentDate }: NotificationBannerProps) {
   return (
-    <div className='bg-gradient-to-b from-[#D7582B] to-[#C9633F] text-white py-4 px-6'>
-      <div className='max-w-[1240px] mx-auto flex items-center justify-between'>
-        <div className='flex items-center gap-4'>
+    <div className='bg-gradient-to-b from-[#D7582B] to-[#C9633F] text-white py-4 px-6 text-center md:text-left'>
+      <div className='max-w-[1240px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4'>
+        <div className='flex flex-col md:flex-row items-center gap-6 md:gap-4 justify-center'>
           <div className='w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center'>
             <Clock className='w-5 h-5 text-white' />
           </div>
