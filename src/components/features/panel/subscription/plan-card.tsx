@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { SubscriptionPlan } from '@/lib/types/subscription';
 import { Check, X } from 'lucide-react';
+import { useState } from 'react';
+import { PaymentModal } from './payment-modal';
 
 interface PlanCardProps {
   plan: SubscriptionPlan;
@@ -8,6 +10,15 @@ interface PlanCardProps {
 }
 
 export function PlanCard({ plan, icon }: PlanCardProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSubscribe = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className='bg-white rounded-lg shadow-lg p-6 relative border border-gray-200 hover:shadow-xl transition-shadow duration-300'>
       {/* Popular Badge */}
@@ -51,10 +62,14 @@ export function PlanCard({ plan, icon }: PlanCardProps) {
 
       {/* Subscribe Button */}
       <Button
+        onClick={handleSubscribe}
         className={`w-full text-white font-medium py-3 rounded-lg transition-colors ${plan.buttonColor}`}
       >
         {plan.buttonText}
       </Button>
+
+      {/* Payment Modal */}
+      <PaymentModal isOpen={isModalOpen} onClose={handleCloseModal} plan={plan} />
     </div>
   );
 }

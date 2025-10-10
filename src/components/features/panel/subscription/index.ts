@@ -1,5 +1,9 @@
+export { BenefitsSection } from './benefits-section';
+export { FeatureCard } from './feature-card';
 export { HeroBanner } from './hero-banner';
 export { NotificationBanner } from './notification-banner';
+export { PaymentModal } from './payment-modal';
 export { PlanCard } from './plan-card';
 export { PlanToggle } from './plan-toggle';
+export { StatsSection } from './stats-section';
 export { SubscriptionContent } from './subscription-content';

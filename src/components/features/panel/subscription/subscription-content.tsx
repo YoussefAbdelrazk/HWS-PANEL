@@ -3,10 +3,12 @@
 import { subscriptionData } from '@/lib/data/subscription';
 import { Award, Calendar, Flame, Star } from 'lucide-react';
 import { useState } from 'react';
+import { BenefitsSection } from './benefits-section';
 import { HeroBanner } from './hero-banner';
 import { NotificationBanner } from './notification-banner';
 import { PlanCard } from './plan-card';
 import { PlanToggle } from './plan-toggle';
+import { StatsSection } from './stats-section';
 
 const planIcons = {
   bronze: <Award className='w-8 h-8' />,
@@ -16,7 +18,7 @@ const planIcons = {
 };
 
 export function SubscriptionContent() {
-  const [isYearly, setIsYearly] = useState(false);
+  const [, setIsYearly] = useState(false);
 
   const handleToggle = (yearly: boolean) => {
     setIsYearly(yearly);
@@ -40,6 +42,12 @@ export function SubscriptionContent() {
           paymentDate={subscriptionData.notification.paymentDate}
         />
       )}
+
+      {/* Stats Section */}
+      <StatsSection />
+
+      {/* Benefits Section */}
+      <BenefitsSection />
 
       {/* Main Content */}
       <div className='bg-white py-16'>
