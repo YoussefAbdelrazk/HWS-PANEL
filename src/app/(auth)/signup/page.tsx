@@ -1,4 +1,4 @@
-import SignupForm from '@/components/features/auth/signup/SignupForm';
+import RegistrationForm from '@/components/features/auth/signup/RegistrationForm';
 import Image from 'next/image';
 
 export default function SignupPage() {
@@ -23,7 +23,8 @@ export default function SignupPage() {
           </div>
 
           {/* Signup Form Component */}
-          <SignupForm />
+          {/* <SignupForm /> */}
+          <RegistrationForm />
 
           {/* Footer */}
           <div className='mt-8 text-center'>
