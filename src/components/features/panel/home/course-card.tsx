@@ -59,11 +59,11 @@ export default function CourseCard({ course }: CourseCardProps) {
               course.status,
             )}`}
           >
-            {course.status === 'free' ? 'Free' : 'Premium'}
+            {course.status === 'completed' ? 'Completed' : 'In Progress'}
           </span>
           <div className='flex items-center gap-1'>
             <Star size={14} className='text-yellow-500 fill-current' />
-            <span className='text-sm font-medium text-gray-700'>{course.rating}</span>
+            <span className='text-sm font-medium text-gray-700'>{course.progress}%</span>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export default function CourseCard({ course }: CourseCardProps) {
           <div className='flex items-center gap-1'>
             <Users size={14} />
             <span>
-              {course.students} Student{course.students !== 1 ? 's' : ''}
+              {course.videoCount} Student{course.videoCount !== 1 ? 's' : ''}
             </span>
           </div>
         </div>

@@ -8,6 +8,34 @@ export interface LoginResponse {
   token: string;
 }
 
+// Forgot Password API Types
+export interface ForgotPasswordStep1Request {
+  email: string;
+}
+
+export interface ForgotPasswordStep1Response {
+  message: string;
+}
+
+export interface ForgotPasswordStep2Request {
+  email: string;
+  otp: string;
+}
+
+export interface ForgotPasswordStep2Response {
+  message: string;
+}
+
+export interface ForgotPasswordStep3Request {
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface ForgotPasswordStep3Response {
+  message: string;
+}
+
 // Registration API Response Types
 export interface RegistrationStep1Response {
   message: string;

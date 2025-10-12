@@ -54,6 +54,34 @@ export const registrationStep2Schema = z.object({
   otp: z.string().min(1, 'OTP is required').length(4, 'OTP must be exactly 4 digits'),
 });
 
+// Forgot Password Step 1 Schema (Request Password Reset)
+export const forgotPasswordStep1Schema = z.object({
+  email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
+});
+
+// Forgot Password Step 2 Schema (Verify OTP)
+export const forgotPasswordStep2Schema = z.object({
+  email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
+  otp: z.string().min(1, 'OTP is required').length(4, 'OTP must be exactly 4 digits'),
+});
+
+// Forgot Password Step 3 Schema (Complete Password Reset)
+export const forgotPasswordStep3Schema = z
+  .object({
+    email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
+    password: z
+      .string()
+      .min(1, 'Password is required')
+      .min(8, 'Password must be at least 8 characters')
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+        'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'),
+    confirmPassword: z.string().min(1, 'Please confirm your password'),
+  })
+  .refine(data => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
+
 // Legacy signup schema (keeping for backward compatibility)
 export const signupSchema = z
   .object({
@@ -101,3 +129,6 @@ export type LoginFormData = z.infer<typeof loginSchema>;
 export type SignupFormData = z.infer<typeof signupSchema>;
 export type RegistrationStep1Data = z.infer<typeof registrationStep1Schema>;
 export type RegistrationStep2Data = z.infer<typeof registrationStep2Schema>;
+export type ForgotPasswordStep1Data = z.infer<typeof forgotPasswordStep1Schema>;
+export type ForgotPasswordStep2Data = z.infer<typeof forgotPasswordStep2Schema>;
+export type ForgotPasswordStep3Data = z.infer<typeof forgotPasswordStep3Schema>;

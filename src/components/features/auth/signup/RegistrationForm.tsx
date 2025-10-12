@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import OTPInput from '@/components/ui/otp-input';
 import { PhoneInput } from '@/components/ui/phone-input';
 import {
   Select,
@@ -441,12 +442,14 @@ export default function RegistrationForm() {
                     Verification Code *
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder='Enter 4-digit code'
-                      className='h-12 border-gray-300 focus:ring-yellow-500 focus:border-yellow-500 text-center text-2xl tracking-widest'
+                    <OTPInput
+                      length={4}
+                      value={field.value}
+                      onChange={field.onChange}
+                      onComplete={field.onChange}
+                      disabled={isLoading}
                       error={!!step2Errors.otp}
-                      maxLength={4}
-                      {...field}
+                      className='justify-center'
                     />
                   </FormControl>
                   <FormMessage />
