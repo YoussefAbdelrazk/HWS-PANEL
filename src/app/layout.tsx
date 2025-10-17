@@ -1,4 +1,5 @@
 import { Toaster } from '@/components/ui/sonner';
+import QueryProvider from '@/lib/utils/provider';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -31,7 +32,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 overflow-x-hidden`}
       >
-        {children}
+        <QueryProvider>{children}</QueryProvider>
+
         <Toaster />
       </body>
     </html>

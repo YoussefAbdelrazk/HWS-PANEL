@@ -1,3 +1,4 @@
+import { useCourses } from '@/hooks/courses';
 import { Course } from '@/lib/data/courses';
 import { CourseCard } from './course-card';
 
@@ -6,6 +7,8 @@ interface CourseModulesSectionProps {
 }
 
 export function CourseModulesSection({ courses }: CourseModulesSectionProps) {
+  const { data, isLoading, error } = useCourses();
+  console.log(data);
   return (
     <div className='bg-white py-16'>
       <div className='max-w-6xl mx-auto px-4'>
